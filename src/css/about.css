@@ -1,0 +1,35 @@
+#aboutpage {
+    max-width: 65rem;
+    position: relative;
+    margin: 0 auto;
+}
+#aboutpage h1 {
+    font-size: 3rem;
+    margin: 0;
+    padding: 1rem;
+}
+#aboutpage p {
+    font-size: 2rem;
+    margin: 0;
+    padding: 1rem;
+}
+.aboutcontainer {
+    background-color: red;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#firstrowabout {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+}
+#aboutblerb {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    flex: 1;
+}

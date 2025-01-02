@@ -1,0 +1,121 @@
+svg.clock {
+    height: 43rem; 
+    margin-left: auto;
+    position: absolute;
+    right: -0.5rem;
+    top: 0.5rem;
+    animation-delay: 1s;
+   }
+   svg.clock2 {
+    height: 43rem; 
+    margin-left: auto;
+    position: absolute;
+    left: -12rem;
+    top: -10rem;
+    animation-delay: 2s;
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+   }
+  .clockPath {
+    fill: none;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 0.02rem;
+    stroke-dasharray: 0 42.3rem;
+  }
+  .clockPath.bigcircle {
+    animation: bigcircle 5s ease-in-out forwards, spin 10s linear; 
+    transform-origin: 44.70588% 36.32086%;
+    animation-delay:  inherit;
+  }
+  .clockPath.smallcircle {
+    animation: smallcircle 5s ease-in-out forwards, spin 10s linear;  
+    transform-origin: 72.35294% 20.32239%;
+    animation-delay:  inherit;
+  }
+  .clockPath.pendulumR {
+    animation: penduluminv 5s ease-in-out forwards ;
+    animation-delay:  inherit;
+  }
+  .clockPath.pendulumL {
+    animation: pendulum 5s ease-in-out forwards ;
+    animation-delay:  inherit;
+  }
+  .clockPath.rombusStack {
+    animation: rombusstack 5s ease-in-out forwards ;
+    animation-delay:  inherit;
+  }
+  .clockPath.curvedpendulum {
+    animation: cpendulum  5s ease-in-out forwards ;
+    animation-delay:  inherit;
+  }
+  .clockPath.bigRombus {
+    animation: bigrombus  5s ease-in-out forwards ;
+    animation-delay:  inherit;
+  }
+  @keyframes bigcircle {
+    0% {
+      stroke-dasharray: 0 42.3rem;
+    }
+    100% {
+      stroke-dasharray: 42.3rem 42.3rem;
+    }
+  }
+  
+  @keyframes penduluminv {
+    0% {
+      stroke-dasharray: 0 14.7rem 0;
+    }
+    100% {
+      stroke-dasharray: 0 0  14.7rem;
+    }
+  }
+  @keyframes smallcircle {
+    0% {
+      stroke-dasharray: 0 26.2rem ;
+    }
+    100% {
+      stroke-dasharray: 26.2rem  26.2rem ;
+    }
+  }
+  @keyframes pendulum {
+    0% {
+      stroke-dasharray: 0 14.7rem ;
+    }
+    100% {
+      stroke-dasharray: 14.7rem  14.7rem;
+    }
+  }
+  @keyframes cpendulum {
+    0% {
+      stroke-dasharray: 0 14.7rem 14.7rem ;
+    }
+    100% {
+      stroke-dasharray: 0 0 14.7rem;
+    }
+  }
+  @keyframes bigrombus {
+    0% {
+      stroke-dasharray: 0 14.6rem ;
+    }
+    100% {
+      stroke-dasharray: 14.6rem  14.6rem ;
+    }
+  }
+  @keyframes rombusstack {
+    0% {
+      stroke-dasharray: 0 5.9rem ;
+    }
+    100% {
+      stroke-dasharray: 5.9rem  5.9rem;
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

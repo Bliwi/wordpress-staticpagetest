@@ -1,0 +1,101 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fullscreen-overlay-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+.fullscreen-image {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.nav-button {
+  position: absolute;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+.zoom-reset {
+  right: 150px;
+  bottom: 10px;
+}
+.zoom-in {
+  right: 10px;
+  bottom: 10px;
+}
+.zoom-out {
+  right: 80px;
+  bottom: 10px;
+}
+.zoom-text {
+  right: 50px;
+  bottom: 10px;
+}
+.prev-button {
+  left: 10px;
+  top: 50%;
+}
+
+.next-button {
+  right: 10px;
+  top: 50%;
+}
+.close-nav {
+  right: 10px;
+  top: 50px;
+}
+.IconSpin {
+  animation: rotating 1s linear infinite;
+}
+.carrotload {
+  color: #fff;
+  height: 5rem;
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

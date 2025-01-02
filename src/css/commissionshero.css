@@ -1,0 +1,123 @@
+/*Commissions hero*/
+.commissionsHeroSidebar {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    height: 35rem;
+  }
+  .itemHeroCommissions {
+    flex: 1;
+    background-color: #ccbeaa;
+    margin: 0.5rem 0;
+    border-radius: 1.5rem;
+    transition: flex 0.5s ease, background-color 0.5s ease, background-position 0.5s ease, color 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    color: transparent;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: auto;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 30px;
+  }
+
+  .itemHeroCommissions:hover {
+    flex: 2;
+    background-color: #b96a29;
+    color: white;
+    background-position: center;
+  }
+
+  .itemHeroCommissions:not(:hover) {
+    flex: 0.5;
+  }
+
+  .half-bodyCommission:not(:hover) {
+    background-position: 0 -40px;
+  }
+
+  .full-bodyCommission:not(:hover) {
+    background-position: 0 -10px;
+  }
+
+  .commissionsHeroContainer {
+    display: flex;
+    height: fit-content;
+    border-radius: 2rem;
+    padding: 1rem;
+    width: auto;
+    background: gray;
+  }
+
+  .commissionsHeroBackground {
+    width: calc(100% - 220px);
+    height: auto;
+    margin-left: 20px;
+    background-image: url('../assets/bg.png');
+    background-size: 120%;
+    background-position: center;
+    mask: url('../assets/container.svg');
+    mask-position: bottom right;
+    mask-size: 65rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .containerHeroMain.active {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  } 
+
+  .containerHeroMain {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: visibility 0s, height 0s, opacity 0.5s, transform 0.5s;
+    background-color: none;
+    pointer-events:none;
+  }
+
+  #commissionsHeroCharacter {
+    background-image: url('../assets/kagogi icon.png');
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120%;
+    opacity: 1;
+    transition: visibility 0s, height 0s, opacity 0.5s, backgroundImage 0.5s;
+  }
+  .commissionsHeroHeader {
+    font-size: 200pt;
+    z-index: 300;
+  }
+  #callForActionPortfolio {
+    position: absolute;
+    right: 8rem;
+      top: 39rem;
+    background-color: red;
+    width: 15rem;
+    height: 5rem;
+    border-radius: 100px;
+    text-align: center;
+    align-content: center;
+  }
+  #callForActionPortfolioCircle {
+    position: absolute;
+    right: 3rem;
+    top: 39rem;
+    background-color: rgb(255, 0, 200);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100px;
+    text-align: center;
+    align-content: center;
+  }
