@@ -29,7 +29,7 @@ const Portfolio: React.FC<PortfolioProps> = () => {
         </ul>
       </nav>
       <div>
-        <Outlet />
+        <Outlet/>
       </div>
     </div>
   );

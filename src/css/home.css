@@ -6,37 +6,43 @@
 	background: var(--gray2);
 	width: 55rem;
 	height: 35rem;
-  padding: 1.5rem;
-  transition: all 0.5s ease-in-out;
+	padding: 1.5rem;
+	transition: all 0.5s ease-in-out;
 }
+
 #heroInner {
-  position: relative;
-  width: auto;
-  height: 100%;
-  background: var(--gray1);
-  border-radius: 2.5rem;
-  mask:  url('../assets/square-corner.svg');
-  mask-position: top right;
-  mask-size: 70rem;
+	position: relative;
+	width: auto;
+	height: 100%;
+	background: var(--gray1);
+	border-radius: 2.5rem;
+	mask: url('../assets/square-corner.svg');
+	mask-position: top right;
+	mask-size: 70rem;
 }
+
 #spash {
 	background: url('../assets/spash.png');
-	background-size: cover;
+	filter: blur(var(--scroll-amount-splash));
 	position: absolute;
-	width: 100vw;
+	background-size: cover;
+	width: 110vw;
+	margin-left: -5vw;
 	height: 100vh;
-	filter: blur(1rem);
+	z-index: -1;
 }
+
 #home h1 {
-    text-align: center;
+	text-align: center;
 	font-family: 'Syne', serif;
 	font-size: 3rem;
 	font-weight: 800;
-	text-transform: uppercase; 
+	text-transform: uppercase;
 	margin-top: 0rem;
 	margin-bottom: 1rem;
 	transform: scalex(90%)
 }
+
 #container2 {
 	position: sticky;
 	z-index: 1;
@@ -45,6 +51,7 @@
 	background: var(--gray1);
 	top: 1rem;
 }
+
 #container3 {
 	position: sticky;
 	background: var(--white);
@@ -53,12 +60,14 @@
 	margin-bottom: -4rem;
 	top: 8rem;
 }
+
 #container4 {
-    position: relative;
-    background: var(--gray1);
-    z-index: 3;
+	position: relative;
+	background: var(--gray1);
+	z-index: 3;
 	height: 64rem;
 }
+
 /*Hero Card */
 #ct1wrapper {
 	width: 100%;

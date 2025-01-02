@@ -16,6 +16,7 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
     const [imagesHigh, setImagesHigh] = useState<string[]>([]);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoadingGal, setIsLoadingGal] = useState<boolean>(true);
     
     useEffect(() => {
         const fetchImages = async () => {
@@ -23,7 +24,9 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
                 const response = await axios.get(`/api/storage/v1/b/bliwiukassets/o?prefix=lowres/${folder}`);
                 console.log('Response data:', response.data);
                 const imageUrls = response.data.items.map((item: any) => `https://storage.googleapis.com/bliwiukassets/${item.name}`);
-                setImages(imageUrls);
+                setImages(imageUrls)
+                setIsLoadingGal(false)
+                console.log("images fetching complete.")
             } catch (error) {
                 console.error('Error fetching images:', error);
             }
@@ -33,8 +36,9 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
                 const response = await axios.get(`/api/storage/v1/b/bliwiukassets/o?prefix=highres/${folder}`);
                 console.log('Response data:', response.data);
                 const imageUrls = response.data.items.map((item: any) => `https://storage.googleapis.com/bliwiukassets/${item.name}`);
-                setImagesHigh(imageUrls);
+                setImagesHigh(imageUrls)
                 console.log(imageUrls)
+                console.log("images fetching complete.")
             } catch (error) {
                 console.error('Error fetching images:', error);
             }
@@ -97,16 +101,23 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
     };
 
     return (
-        <div className="gallery">
-            {images.map((image, index) => (
-                <img
-                    key={index}
-                    src={image}
-                    alt={`Gallery image ${index + 1}`}
-                    onClick={() => handleImageClick(index)}
-                    className="gallery-image"
-                />
-            ))}
+        <div>
+            
+            {isLoadingGal ? (
+                <FontAwesomeIcon icon={faCarrot} className="IconSpin carrotload" />
+            ) : (
+                <div className="gallery">
+                    {images.map((image, index) => (
+                        <img
+                            key={index}
+                            src={image}
+                            alt={`Gallery image ${index + 1}`}
+                            onClick={() => handleImageClick(index)}
+                            className="gallery-image"
+                        />
+                    ))}
+                </div>
+            )}
             {selectedImage && (
                 <div className="fullscreen-overlay">
                     

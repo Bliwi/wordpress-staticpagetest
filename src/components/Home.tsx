@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useRef } from "react";
+import React, { useEffect } from 'react';
+
 import { motion } from "motion/react"
 import IconHero from './commissionshero/IconHero';
 import HbHero from './commissionshero/HbHero';
@@ -32,12 +34,24 @@ export default function Home() {
       ref.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollAmount = window.scrollY;
+      const scrollAmmountcap = Math.min(scrollAmount / 10, 100);
+      document.documentElement.style.setProperty('--scroll-amount', `${scrollAmount}px`);
+      document.documentElement.style.setProperty('--scroll-amount-splash', `${scrollAmmountcap}px`);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div>
-    <motion.div 
-    
-    id="spash"
-    />
+    <motion.div id="spash"/>
     <div id="home" className="page">
       <div id="ct1wrapper">
         <div id="container1">
