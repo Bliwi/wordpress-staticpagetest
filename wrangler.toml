@@ -1,0 +1,11 @@
+name = "my-pages-app"
+pages_build_output_dir = "./dist"
+
+route = "https://storage.googleapis.com/*"
+
+# Add kv_namespaces if needed
+# kv_namespaces = [
+#   { binding = "MY_KV_NAMESPACE", id = "your_kv_namespace_id_here" }
+# ]
+
+# Add any other necessary configurations

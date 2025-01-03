@@ -21,7 +21,7 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get(`/api/storage/v1/b/bliwiukassets/o?prefix=lowres/${folder}`);
+                const response = await axios.get(`https://storage.googleapis.com/storage/v1/b/bliwiukassets/o?prefix=lowres/${folder}`);
                 console.log('Response data:', response.data);
                 const imageUrls = response.data.items.map((item: any) => `https://storage.googleapis.com/bliwiukassets/${item.name}`);
                 setImages(imageUrls)
