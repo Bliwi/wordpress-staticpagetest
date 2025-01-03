@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarrot } from '@fortawesome/free-solid-svg-icons'
+
+import { imageData } from './fetch';
 import {
     TransformWrapper,
     TransformComponent
   } from "react-zoom-pan-pinch";
-import axios from 'axios';
-console.log('Gallery component loaded');
 interface GalleryProps {
     folder:string;
 }
-
 const Gallery: React.FC<GalleryProps> = ({ folder }) => {
     const [images, setImages] = useState<string[]>([]);
     const [imagesHigh, setImagesHigh] = useState<string[]>([]);
@@ -21,29 +20,16 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get(`https://storage.googleapis.com/storage/v1/b/bliwiukassets/o?prefix=lowres/${folder}`);
-                console.log('Response data:', response.data);
-                const imageUrls = response.data.items.map((item: any) => `https://storage.googleapis.com/bliwiukassets/${item.name}`);
+                const imageResponse = await imageData;
+                const imageUrls = imageResponse?.data.items.filter((item: any) => item.name.includes(`lowres/${folder}`)).map((item: any) => `https://storage.googleapis.com/bliwiukassets/${item.name}`);
+                const imageUrlsHigh = imageResponse?.data.items.filter((item: any) => item.name.includes(`highres/${folder}`)).map((item: any) => `https://storage.googleapis.com/bliwiukassets/${item.name}`);
+                setImagesHigh(imageUrlsHigh)
                 setImages(imageUrls)
                 setIsLoadingGal(false)
-                console.log("images fetching complete.")
             } catch (error) {
                 console.error('Error fetching images:', error);
             }
         };
-        const fetchHighres = async () => {
-            try {
-                const response = await axios.get(`/api/storage/v1/b/bliwiukassets/o?prefix=highres/${folder}`);
-                console.log('Response data:', response.data);
-                const imageUrls = response.data.items.map((item: any) => `https://storage.googleapis.com/bliwiukassets/${item.name}`);
-                setImagesHigh(imageUrls)
-                console.log(imageUrls)
-                console.log("images fetching complete.")
-            } catch (error) {
-                console.error('Error fetching images:', error);
-            }
-        };
-        fetchHighres();
         fetchImages();
     }, []);
 
@@ -90,10 +76,6 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
                 handleNext(resetTransform);
             } else if (event.key === 'ArrowLeft') {
                 handlePrev(resetTransform);
-            } else if (event.key === 'ArrowUp') {
-                // zoomIn();
-            } else if (event.key === 'ArrowDown') {
-                // zoomOut();
             } else if (event.key === 'Escape') {
                 handleClose();
             }
