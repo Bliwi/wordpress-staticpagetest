@@ -119,7 +119,7 @@ const framelogo: React.CSSProperties = {
     position: "relative",
     height: "30rem",
     borderRadius: "2rem",
-    backgroundColor: "#fff",
+    backgroundColor: "var(--white)",
     overflow: "hidden",
 }
 const logo: React.CSSProperties = {
@@ -128,11 +128,12 @@ const logo: React.CSSProperties = {
 }
 const shape: React.CSSProperties = {
     strokeWidth: 2,
-    stroke: "#00000059",
+    stroke: "var(--dark)",
+    opacity: 0.5,
     fill: "transparent",
 }
 const shapeStrong: React.CSSProperties = {
     strokeWidth: 2,
-    stroke: "#000",
+    stroke: "var(--dark)",
     fill: "transparent",
 }

@@ -26,7 +26,7 @@
 
   .itemHeroCommissions:hover {
     flex: 2;
-    background-color: #b96a29;
+    background-color: var(--accent);
     color: white;
     background-position: center;
   }
@@ -55,7 +55,7 @@
   #ActiveComponentWrapper {
     height: 100%;
     width: 100%;
-    background-image: url('../assets/bg.png');
+    background-color: var(--gray2);
     background-size: 120%;
     background-position: center;
     mask: url('../assets/container.svg');
@@ -73,12 +73,6 @@
     overflow: hidden;
     position: relative;
   }
-  .containerHeroMain.active {
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-  } 
-
   .containerHeroMain {
     position: absolute;
     top: 0;
@@ -89,18 +83,6 @@
     transition: visibility 0s, height 0s, opacity 0.5s, transform 0.5s;
     background-color: none;
     pointer-events:none;
-  }
-
-  #commissionsHeroCharacter {
-    background-image: url('../assets/kagogi icon.png');
-    height: 100%;
-    width: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 120%;
-    opacity: 1;
-    transition: visibility 0s, height 0s, opacity 0.5s, backgroundImage 0.5s;
   }
   .commissionsHeroHeader {
     font-size: 200pt;

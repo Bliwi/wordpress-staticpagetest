@@ -41,6 +41,27 @@
 	left: -12rem;
 
 }
+#clock3 {
+	width: 50rem;
+	position: absolute;
+	top: 100vh;
+	left: -20rem;
+
+}
+#clock4 {
+	width: 50rem;
+	position: absolute;
+	top: 180vh;
+	right: -20rem;
+
+}
+#clock5 {
+	width: 20rem;
+	position: absolute;
+	top: 260vh;
+	left: 2rem;
+
+}
 #circles1 {
 	position: absolute;
 	height: 5rem;
@@ -52,6 +73,7 @@
 	height: 5rem;
 	bottom: -2.5rem;
 	left: 2.5rem;
+	transform: rotate(180deg);
 }
 #socialstack{
 	position: absolute;
@@ -117,6 +139,7 @@
 	fill: white;
 }
 .stackIcon {
+	fill: var(--dark);
 	transition: all 0.1s ease-in-out;
 }
 .stackIcon:hover {
@@ -141,7 +164,7 @@
 	background-size: cover;
 	width: 110vw;
 	margin-left: -5vw;
-	height: 100vh;
+	height: 110vh;
 	z-index: -1;
 }
 
@@ -190,6 +213,19 @@
 	height: 90vh;
 	align-items: center;
 	display: flex;
+}
+.reactclock {
+    fill: none;
+    stroke: var(--dark);
+    stroke-miterlimit: 10;
+    stroke-width: 0.02rem;
+}
+.reactclockrect {
+	fill: none;
+    stroke: var(--dark);
+    stroke-miterlimit: 10;
+    stroke-width: 0.02rem;
+	transform: translate(-11.04 106.82);
 }
 
 /*contact section*/
@@ -250,7 +286,7 @@
 }
 
 #contactDiscordInner {
-	
+
 	background: var(--accent);
 	color: var(--white);
 	height: 100%;
@@ -288,8 +324,52 @@
 	margin-top: 1.5rem;
 }
 /*tos section*/
-.innerTOS {
+#innerTOS {
 	flex: 1;
 	background: var(--gray1);
 	border-radius: 3rem;
+	align-items: center;
+	overflow: scroll;
+}
+#innerTOS h2 {
+	font-size: 2.5rem;
+	margin: 1rem;
+	padding-bottom: 2rem;
+	text-align: center;
+	padding: 0;
+}
+#innerTOS p {
+	text-align: center;
+	font-size: 1.3rem;
+	margin: 1rem;
+	line-height: 2rem;
+}
+#sidebarTOS {
+	display: flex;
+	flex-direction: column;
+}
+#sidebarTOS a {
+	color: var(--dark);
+	font-size: 1.2rem;
+	margin: 0.2rem;
+	padding-left: 1rem;
+	cursor: pointer;
+	font-weight: 100;
+}
+#sidebarTOS .headerSidebarTOS {
+	padding-left: 0;
+	font-size: 1.8rem;
+	font-weight: 800;
+}
+
+@media screen and (max-height: 50rem){
+	.page {
+		background: blue;
+	}
+	#container2 {
+		top: calc(100vh - 64rem);
+	}
+	#container3 {
+		top: calc(100vh - 64rem);
+	}
 }

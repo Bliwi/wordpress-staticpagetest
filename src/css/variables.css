@@ -1,3 +1,4 @@
+
 :root {
     --white: #fff;
     --gray1: #F5F5F5;
@@ -5,3 +6,11 @@
     --dark: #2C2C2C;
     --accent: #D52327;
 }
+/*
+    :root {
+        --white: #6c6c6c;
+        --gray1: #5c5c5c;
+        --gray2: #333;
+        --dark: #F5F5F5;
+        --accent: #D52327;
+    }

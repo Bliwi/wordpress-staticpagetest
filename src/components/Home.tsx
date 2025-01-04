@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useRef } from "react";
 import { motion } from "motion/react"
 import React, { useEffect } from 'react';
+import { Link } from "react-router-dom";
 import ClockAnim from './clock';
+import ClockAnim2 from './clock2';
+import ClockAnim3 from './clock3';
 import IconHero from './commissionshero/IconHero';
 import HbHero from './commissionshero/HbHero';
 import FbHero from './commissionshero/FbHero';
@@ -10,7 +13,9 @@ import SceneHero from './commissionshero/SceneHero';
 import RefSheetHero from './commissionshero/RefSheetHero';
 
 export default function Home() {
-  const [activeComp, setActiveComp] = useState('iconhero');
+  
+  const [activeComp, setActiveCompb] = useState('iconhero');
+  const [portfoliohref, setPortfoliohref] = useState("/portfolio/icons");
   const renderActiveComponent = () => {
     switch (activeComp) {
       case 'iconhero':
@@ -27,10 +32,29 @@ export default function Home() {
         return null;
     }
   };
-  const tos2 = useRef(null);
+  const setActiveComp = (comp: string) => {
+    setActiveCompb(comp);
+    if (comp === 'iconhero') {
+      setPortfoliohref('/portfolio/icons');
+    } else if (comp === 'hbhero') {
+      setPortfoliohref('/portfolio/halfbody');
+    } else if (comp === 'fbhero') {
+      setPortfoliohref('/portfolio/fullbody');
+    } else if (comp === 'scenehero') {
+      setPortfoliohref('/portfolio/scene');
+    } else if (comp === 'refsheethero') {
+      setPortfoliohref('/portfolio/refsheet');
+    }
+  }
+  const tos = useRef(null);
+  const tosbasicinfo = useRef(null);
+  const tosqueue = useRef(null);
+  const tosstandardprocedure = useRef(null);
+  const toscomplexcharacters = useRef(null);
+  const toscommercial = useRef(null);
+
   const contact = useRef(null);
   const container2 = useRef(null);
-  const tos = useRef(null);
 
   const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
@@ -92,6 +116,17 @@ export default function Home() {
       animate="visible"
     >
       <div id="spash" />
+      <div id="clock3">
+          
+        <ClockAnim />
+      </div>
+      <div id="clock4">
+          <ClockAnim3 />
+      </div>
+      <div id="clock5">
+          
+        <ClockAnim2 />
+      </div>
       <div id="home" className="page">
         <div id="ct1wrapper">
           <motion.div
@@ -191,8 +226,10 @@ export default function Home() {
               <div id="ActiveComponentWrapper">
               {renderActiveComponent()}
               </div>
-              <div id="callForActionPortfolio">More Examples</div>
-              <div id="callForActionPortfolioCircle"></div>
+              <Link to={portfoliohref} id="callForActionPortfolioWrapper">
+                <a id="callForActionPortfolio">More Examples</a>
+                <div id="callForActionPortfolioCircle"></div>
+              </Link>
             </div>
           </div>
           <div id="moreinfo">
@@ -241,29 +278,92 @@ export default function Home() {
         
         <div id="container4" className="container">
           <div className="flex">
-            <div className="sidebarTOS" style={{ flex: 0.5, background: 'none' }}>
-              <button onClick={() => handleScroll(tos2)}>Scroll to Element</button>
+            <div id="sidebarTOS" style={{ flex: 0.5, background: 'none' }}>
+              <a className="headerSidebarTOS" onClick={() => handleScroll(tosbasicinfo)}>TOS</a>
+              <a onClick={() => handleScroll(tosbasicinfo)}>Basic Information</a>
+              <a onClick={() => handleScroll(tosqueue)}>Queue</a>
+              <a onClick={() => handleScroll(tosstandardprocedure)}>Standard procedure</a>
+              <a onClick={() => handleScroll(toscomplexcharacters)}>Complex characters</a>
+              <a onClick={() => handleScroll(toscommercial)}>Commercial</a>
             </div>
-            <div className="innerTOS">
-              <h1>Hello! This is my TOS</h1>
-              <p>lorem ipsum
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            <div id="innerTOS">
+              <h2 ref={tosbasicinfo}>Basic information</h2>
+              <p>You must be 18 years or older to commission.<br/>
+                
+                Extra characters are an additional 100% per character.<br/>
+                
+                Refunds are not possible after the first sketch.<br/>
+                
+                The Payment is done fully upfront.<br/>
+                
+                You have to send a down payment to be added to the queue.<br/>
+                
+                Deadlines should be stated before the payment, and will be charged more.<br/>
+                
+                Delivery times varies depending on the commission, ask before payment.<br/>
+                
+                Complex characters or scenes might be charged more. <a>Click here for more info.</a><br/>
+                
+                Artwork will be created using image references,
+                
+                requests based on descriptions will cost more.<br/>
+                
+                Payments done through paypal have a 10% fee due to taxes.</p><br/>
+              <h2 ref={tosqueue}>Queue</h2>
+              <p>I thank you for your support and for your patience when commissioning.<br/>
 
+                I have created a queue system to manage commissions.<br/>
 
-                Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum.
-              </p>
-              <h1 ref={tos2}>Hello! This is my TOS2</h1>
-              <p>lorem ipsum
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                To be added to the queue I require a down payment.<br/>
 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
-
-                Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum.
-              </p>
-            </div>
+                You can commission multiple artworks to secure more than one slot.<br/>
+                
+                <a>You can view the queue in this page.</a>
+              </p><br/>
+              <h2 ref={tosstandardprocedure}>Standard procedure</h2>
+              <p>
+              1st. You will receive a first sketch for revision, up to 2 major changes on this stage.<br/>
+            Additional changes will be charged.<br/>
+            2rd. A version with base colours for revision.<br/>
+            3th is the rendering/shading process, this might take longer than the other steps due to its complexity.<br/>
+            At the end you will receive a high res version of the artwork for personal use, please read <a>Commercial</a> for more info.<br/>
+            I will be giving you updates throughout the process and update you in case something happens to my health impeding me of completing the illustration.<br/>
+            You will be applicable for a refund in this situation.
+            </p><br/>
+            <h2 ref={toscomplexcharacters}>Complex characters</h2>
+            <p>Complex characters are considered but not limited as follows:<br/>
+            Extra limbs, wings, centaurions...<br/> 
+              This also includes characters with complex designs or clothes.<br/>
+            Armatures, complex fur patterns...I, as the artist will clarify if I consider your character complex, in some cases I will give you the option to continue without extra charges, but I will simplify your character's design.
+            </p><br/>
+            <h2 ref={toscommercial}>Commercial</h2>
+            <p>Basic commissions do not grant you the commercial licence of the illustration.<br/>
+            What is considered commercial use:Content creators(Streamers, Youtubers, tiktokers, ect...),<br/>
+            With audiences greater than 2500 followers.<br/>Any form of merchandise.<br/>
+            Video game assets, icons, textures, characters.<br/>
+            Books, novels, webcomics covers or pages.<br/>
+            NFT's, crypto.<br/>
+            Advertisement.<br/>
+            Image generation with Artificial inteligence.<br/>
+            Please clarify if you plan using your commissions for commercial use.<br/>
+            You can also contact me after the commission if you need the commercial license.<br/>
+            You are allowed to make personal use of the the artwork you commission, please use the provided watermarked version if you decide to post on your social medias.
+            </p><br/>
+            
+          <h2>Thank you for reading my TOS.</h2>
+          <p>I hope you find this information useful when commissioning me.<br/>
+          Fell free to send me any additional questions you may have.</p>
+          
+            <div className="divider"/>
+          <h2>Frequently asked questions</h2>
+            <p>How log does it take to finish a commission?</p>
+            <p>It depends on the complexity of the illustration, but it usually takes 1-2 weeks.</p>
+            <p>Can I post my commissions on my social medias?</p>
+            <p>Yes, you can post your commissions on your social medias, but please use the watermarked version.</p>
+          </div>
           </div>
           <div className="footer">
-            <h1>Footer here</h1>
+            <h2>Footer here</h2>
           </div>
         </div>
       </div>
