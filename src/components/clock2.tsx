@@ -10,8 +10,6 @@ const LoopAnimation = { duration: 20, ease: "easeInOut", repeat: Infinity, repea
 */
 const ClockAnim: React.FC = () => {
     const [isFinishedBig, setIsFinishedBig] = useState<boolean>(false);
-    const [isFinishedsmall, setIsFinishedsmall] = useState<boolean>(false);
-    const [isFinishedsmall2, setIsFinishedsmall2] = useState<boolean>(false);
         
     const draw = {
         hidden: {
