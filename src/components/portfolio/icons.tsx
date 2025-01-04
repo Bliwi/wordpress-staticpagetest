@@ -3,7 +3,6 @@ import Gallery from './gallery';
 
 export default function IconHero() {
   return (
-    
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

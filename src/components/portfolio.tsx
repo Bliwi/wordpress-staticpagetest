@@ -8,8 +8,8 @@ interface PortfolioProps {
 const Portfolio: React.FC<PortfolioProps> = () => {
   return (
     <div>
-      <h2>Portfolio</h2>
-      <nav>
+      <div className="page">
+        
         <ul>
           <li>
             <Link to="icons">Icons</Link>
@@ -27,9 +27,8 @@ const Portfolio: React.FC<PortfolioProps> = () => {
             <Link to="refsheet">Ref Sheet</Link>
           </li>
         </ul>
-      </nav>
-      <div>
-        <Outlet/>
+        <h2>Portfolio</h2>
+        <Outlet />
       </div>
     </div>
   );

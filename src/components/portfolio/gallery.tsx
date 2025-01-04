@@ -6,9 +6,9 @@ import { imageData } from './fetch';
 import {
     TransformWrapper,
     TransformComponent
-  } from "react-zoom-pan-pinch";
+} from "react-zoom-pan-pinch";
 interface GalleryProps {
-    folder:string;
+    folder: string;
 }
 const Gallery: React.FC<GalleryProps> = ({ folder }) => {
     const [images, setImages] = useState<string[]>([]);
@@ -16,7 +16,7 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isLoadingGal, setIsLoadingGal] = useState<boolean>(true);
-    
+
     useEffect(() => {
         const fetchImages = async () => {
             try {
@@ -84,7 +84,7 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
 
     return (
         <div>
-            
+
             {isLoadingGal ? (
                 <FontAwesomeIcon icon={faCarrot} className="IconSpin carrotload" />
             ) : (
@@ -102,7 +102,7 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
             )}
             {selectedImage && (
                 <div className="fullscreen-overlay">
-                    
+
                     <TransformWrapper
                         initialScale={1}
                         minScale={0.5}
@@ -129,9 +129,9 @@ const Gallery: React.FC<GalleryProps> = ({ folder }) => {
                                     <TransformComponent>
                                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh', pointerEvents: 'none' }}>
                                             {isLoading ? (
-                                                <FontAwesomeIcon icon={faCarrot} className="IconSpin carrotload"/>
+                                                <FontAwesomeIcon icon={faCarrot} className="IconSpin carrotload" />
                                             ) : (
-                                                <img src={selectedImage} alt="Full screen" className="fullscreen-image" style={{ maxWidth: '95vw', maxHeight: '90vh'}} />
+                                                <img src={selectedImage} alt="Full screen" className="fullscreen-image" style={{ maxWidth: '95vw', maxHeight: '90vh' }} />
                                             )}
                                         </div>
                                     </TransformComponent>

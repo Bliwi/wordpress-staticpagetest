@@ -20,7 +20,120 @@
 	mask-position: top right;
 	mask-size: 70rem;
 }
+#herologo {
+	position: absolute;
+	height: 4.5rem;
+	right: 2rem;
+	top: 2.5rem;
+	fill: white;
+}
+#clock1 {
+	width: 32rem;
+	position: absolute;
+	top: 0;
+	right: -1rem;
 
+}
+#clock2 {
+	width: 32rem;
+	position: absolute;
+	top: -15rem;
+	left: -12rem;
+
+}
+#circles1 {
+	position: absolute;
+	height: 5rem;
+	bottom: -2.5rem;
+	left: 0;
+}
+#circles2 {
+	position: absolute;
+	height: 5rem;
+	bottom: -2.5rem;
+	left: 2.5rem;
+}
+#socialstack{
+	position: absolute;
+	top: 8rem;
+	fill: #000;
+	right: 2rem;
+	width: 3rem;
+	height: 15rem;
+}
+#callforactionCommissions {
+	position: absolute;
+	bottom: 1rem;
+	left: calc(50% - 6rem);
+	height: 3.5rem;
+	font-size: 1.1rem;
+	border-radius: 2rem;
+	width: 12rem;
+	color: var(--white);
+	background: var(--accent);
+	transition: all 0.1s ease-in-out;
+}
+#callforactionCommissions:hover {
+	transform: scale(1.05);
+}
+#contactCommissions {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	height: 3.5rem;
+	width: 15rem;
+	transition: all 0.1s ease-in-out;
+	display: flex;
+	cursor: pointer;
+}
+#contactCommissions:hover {
+	transform: scale(1.05);
+}
+#contactCommissionsIconSVG {
+	transition: all 1s ease-in-out;
+}
+#contactCommissions:hover #contactCommissionsIconSVG {
+	transform: rotate(360deg);
+}
+#contactCommissionsInner {
+	background: var(--dark);
+	color: var(--white);
+	height: 100%;
+	font-size: 1.1rem;
+	width: 12rem;
+	border-radius: 2rem;
+}
+#contactCommissionsIcon {
+	width: 3.5rem;
+	height: 3.5rem;
+	transition: all 1s ease-in-out;
+
+}
+#contactCommissionsIconbg {
+	fill: var(--dark);
+}
+#contactCommissionsIconInner {
+	margin: auto;
+	fill: white;
+}
+.stackIcon {
+	transition: all 0.1s ease-in-out;
+}
+.stackIcon:hover {
+	fill: var(--accent);
+	transform: scale(1.1);
+}
+
+#moreinfo {
+	background: var(--gray1);
+	width: max-content;
+	font-size: larger;
+	margin-top: 1rem;
+	padding: 1rem;
+	border-radius: 2rem;
+	display: flex;
+	flex-direction: row;
+}
 #spash {
 	background: url('../assets/spash.png');
 	filter: blur(var(--scroll-amount-splash));
@@ -48,13 +161,13 @@
 	z-index: 1;
 	height: 64rem;
 	margin-bottom: -4rem;
-	background: var(--gray1);
+	background: var(--white);
 	top: 1rem;
 }
 
 #container3 {
 	position: sticky;
-	background: var(--white);
+	background: var(--gray1);
 	z-index: 3;
 	height: 64rem;
 	margin-bottom: -4rem;
@@ -63,11 +176,14 @@
 
 #container4 {
 	position: relative;
-	background: var(--gray1);
+	background: var(--white);
 	z-index: 3;
 	height: 64rem;
 }
 
+.containerHeader {
+	cursor: pointer;
+}
 /*Hero Card */
 #ct1wrapper {
 	width: 100%;
@@ -76,9 +192,104 @@
 	display: flex;
 }
 
+/*contact section*/
+#contactContainerwrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 45rem;
+}
+#contactBlurbwrapper{
+	width: 45rem;
+	height: 12rem;
+	position: relative;
+	margin: 5rem auto;
+}
+#contactBlurb{
+	width: 100%;
+	height: 100%;
+	border-radius: 3rem;
+	background: var(--gray2);
+	mask: url('../assets/bottom-square-corner.svg');
+	mask-position: bottom left;
+	mask-size: 48rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
+}
+#contactblurblogo {
+	width: 4rem;
+	position: absolute;
+	bottom: 0.6rem;
+	left: 0.5rem;
+	fill: var(--dark);
+}
+#contactBlurb h2 {
+	font-size: 3.8rem;
+	margin: 0;
+	font-weight: 500;
+}
+#contactDiscordWrapper {
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#contactDiscord {
+	height: 3.5rem;
+	width: 15rem;
+	transition: all 0.1s ease-in-out;
+	display: flex;
+	cursor: pointer;
+}
+#contactDiscord:hover {
+	transform: scale(1.05);
+}
+
+#contactDiscordInner {
+	
+	background: var(--accent);
+	color: var(--white);
+	height: 100%;
+	font-size: 1.1rem;
+	width: 12rem;
+	border-radius: 2rem;
+}
+#contactFotter {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+#contactFotterInner {
+	display: flex;
+	flex-direction: row;
+}
+#contactFotter a {
+	color: var(--dark);
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	margin-top: 1rem;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	height: fit-content;
+}
+#contactFotter a:hover {
+	font-size: 1.2rem;
+	background: var(--white);
+	padding: 0.5rem;
+	border-radius: 0.3rem;
+}
+#contactFotter h2 {
+	font-size: 1.2rem;
+	margin-top: 1.5rem;
+}
+/*tos section*/
 .innerTOS {
 	flex: 1;
-	background: var(--gray2);
+	background: var(--gray1);
 	border-radius: 3rem;
 }

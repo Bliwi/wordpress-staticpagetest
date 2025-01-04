@@ -11,6 +11,14 @@ body {
 	background: var(--gray2);
 	color: var(--dark);
     font-family: 'Manrope', sans-serif;
+	overflow-x: hidden;
+}
+button {
+	border: none;
+	font-family: 'Manrope', sans-serif;
+}
+button:hover {
+	cursor: pointer;
 }
 ::selection {
     background: var(--accent);
@@ -58,7 +66,11 @@ nav {
 	background: var(--gray1);
 	border-radius: 4rem;
 }
-
+.divider {
+	width: 100%;
+	height: 0.1rem;
+	background: var(--dark);
+}
 @media screen and (orientation:portrait) {
   html {
     font-size: 25px;

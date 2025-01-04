@@ -7,7 +7,7 @@
   }
   .itemHeroCommissions {
     flex: 1;
-    background-color: #ccbeaa;
+    background-color: #ffffff;
     margin: 0.5rem 0;
     border-radius: 1.5rem;
     transition: flex 0.5s ease, background-color 0.5s ease, background-position 0.5s ease, color 0.5s ease;
@@ -49,18 +49,25 @@
     border-radius: 2rem;
     padding: 1rem;
     width: auto;
-    background: gray;
+    background: var(--gray1);
   }
 
-  .commissionsHeroBackground {
-    width: calc(100% - 220px);
-    height: auto;
-    margin-left: 20px;
+  #ActiveComponentWrapper {
+    height: 100%;
+    width: 100%;
     background-image: url('../assets/bg.png');
     background-size: 120%;
     background-position: center;
     mask: url('../assets/container.svg');
     mask-position: bottom right;
+    mask-size: 65rem;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+  .commissionsHeroBackground {
+    width: calc(100% - 220px);
+    height: auto;
+    margin-left: 20px;
     mask-size: 65rem;
     border-radius: 2rem;
     overflow: hidden;
@@ -101,9 +108,10 @@
   }
   #callForActionPortfolio {
     position: absolute;
-    right: 8rem;
-      top: 39rem;
-    background-color: red;
+    right: 5rem;
+    bottom: 0rem;
+    color: var(--white);
+    background-color: var(--accent);
     width: 15rem;
     height: 5rem;
     border-radius: 100px;
@@ -112,9 +120,9 @@
   }
   #callForActionPortfolioCircle {
     position: absolute;
-    right: 3rem;
-    top: 39rem;
-    background-color: rgb(255, 0, 200);
+    right: 0rem;
+    bottom: 0rem;
+    background-color: var(--dark);
     width: 5rem;
     height: 5rem;
     border-radius: 100px;
