@@ -4,6 +4,8 @@ import { motion, AnimatePresence, LayoutGroup } from "motion/react"
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import ClockAnim from './clock';
+import ClockAnim2 from './clock2';
+import ClockAnim3 from './clock3';
 import IconHero from './commissionshero/IconHero';
 import HbHero from './commissionshero/HbHero';
 import FbHero from './commissionshero/FbHero';
@@ -125,6 +127,18 @@ export default function Home() {
       initial="hidden"
       animate="visible"
     >
+       <div id="spash" />
+      <div id="clock3">
+          
+        <ClockAnim />
+      </div>
+      <div id="clock4">
+          <ClockAnim3 />
+      </div>
+      <div id="clock5">
+          
+        <ClockAnim2 />
+      </div>
       <div id="home" className="page">
         <div id="ct1wrapper">
           <motion.div
