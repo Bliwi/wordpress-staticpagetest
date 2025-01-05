@@ -3,7 +3,10 @@ import { useRef } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "motion/react"
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
+import useMeasure from "react-use-measure";
 import ClockAnim from './clock';
+import ClockAnim2 from './clock2';
+import ClockAnim3 from './clock3';
 import IconHero from './commissionshero/IconHero';
 import HbHero from './commissionshero/HbHero';
 import FbHero from './commissionshero/FbHero';
@@ -53,7 +56,6 @@ export default function Home() {
 
   const contact = useRef(null);
   const container2 = useRef(null);
-
   const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -78,6 +80,7 @@ export default function Home() {
   const words = ["Info", "Payment Methods", "Standard Procedure"];
   const [index, setIndex] = React.useState(0);
   const [expandedmoreinfo, setExpandedmoreinfo] = React.useState(false);
+  const [performance, setPerformance] = React.useState(true);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -119,13 +122,36 @@ export default function Home() {
       }
     },
   }
+  let [refpageheight, pageheight ] = useMeasure();
+  console.log(pageheight)
   return (
     <motion.div
       variants={animationvars}
       initial="hidden"
       animate="visible"
+      ref={refpageheight}
     >
+      {performance ? (
+        <div id="backgroundelements"
+        style={{
+          height: `${pageheight.height}px`,
+        }}>
+          <div id="spash" />
+          <div id="clock3">
+
+            <ClockAnim />
+          </div>
+          <div id="clock4">
+            <ClockAnim3 />
+          </div>
+          <div id="clock5">
+
+            <ClockAnim2 />
+          </div>
+        </div>
+      ) : null}
       <div id="home" className="page">
+        
         <div id="ct1wrapper">
           <motion.div
             variants={animationvars}
@@ -172,15 +198,17 @@ export default function Home() {
                   <path id="contactCommissionsIconInner" d="M50,29.11h0A27.57,27.57,0,0,0,70.89,50h0A27.57,27.57,0,0,0,50,70.89h0A27.57,27.57,0,0,0,29.11,50h0A27.57,27.57,0,0,0,50,29.11Z" />
                 </svg>
                 <button id="contactCommissionsInner">Contact</button>
+                
               </div>
+              
             </div>
           </motion.div>
         </div>
-        
+        <button onClick={() => setPerformance(!performance)}>togglePerformance</button>
         <div ref={container2}></div>
         <motion.div id="container2" className="container"
         layout="position"
-        transition={{ ease: "easeInOut"}}
+        transition={{ duration: 0.5, ease: "easeInOut"}}
         style={{
           height: expandedmoreinfo ? "100rem" : "64rem",
           top: expandedmoreinfo ? "calc(100vh - 100rem)": "1rem" 
@@ -242,13 +270,25 @@ export default function Home() {
           >
               <motion.div
                 onClick={() => setExpandedmoreinfo(!expandedmoreinfo)}
-                layout="position"
-                transition={{ linear: 5}}
-                style={expandedmoreinfo ? largemoreinfo : minimizedmoreinfo}
+                transition={{ duration: 0.5, linear: 1 }}
+                id="expandedmoreinfobutton"
+                style={{
+                  background: 'var(--gray1)',
+                  padding: '1rem',
+                  borderRadius: '2rem',
+                  alignContent: 'center',
+                  overflow: 'hidden'
+                }}
+                animate={{
+                  width: expandedmoreinfo ? '100%' : '12rem',
+                  height: expandedmoreinfo ? '50rem': '2rem',
+                }}
               >
                 {expandedmoreinfo ? (
                   <div id="expandedmoreinfoInner">
-
+                    <div>Payments</div>
+                    <div>Standard Procedure</div>
+                    <div>basic Info</div>
                   </div>
                 ) : (
                   <AnimatePresence mode="wait">
@@ -264,17 +304,15 @@ export default function Home() {
                 </AnimatePresence>
                 )}
               </motion.div>
-            <motion.div
-              id="commissionsbuttonrowother"
-              layout="position"
-              transition={{ linear: 5}}
-              style={{flexDirection: expandedmoreinfo ? "column": "row" }}
-            >
-              <LayoutGroup>
-                <motion.button onClick={() => handleScroll(tosbasicinfo)}>TOS</motion.button>
-                <motion.button>FAQ</motion.button>
-              </LayoutGroup>
-            </motion.div>
+              <motion.div
+                id="commissionsbuttonrowother"
+                style={{flexDirection: expandedmoreinfo ? "column" : "row" }}
+                transition={{ linear: 5 }}
+                layout data-expanded={expandedmoreinfo}
+              >
+                <motion.button layout transition={{ linear: 5 }} onClick={() => handleScroll(tosbasicinfo)}>TOS</motion.button>
+                <motion.button layout transition={{ linear: 5 }}>FAQ</motion.button>
+              </motion.div>
           </div>
           </LayoutGroup>
         </motion.div>
@@ -422,12 +460,13 @@ const minimizedmoreinfo: React.CSSProperties = {
   background: 'var(--gray1)',
   width: '12rem',
   height: '4rem',
-  padding: '2rem',
-  display: 'flex',
-  borderRadius: '2rem'
+  padding: '0rem',
+  borderRadius: '2rem',
+  alignContent: 'center',
+  paddingLeft: '1rem',
+  overflow: 'hidden'
 }
 const largemoreinfo: React.CSSProperties = {
-  background: 'blue',
   width: '100%',
-  height: '10rem',
+  height: '50rem',
 }
