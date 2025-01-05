@@ -10,7 +10,8 @@ const LoopAnimation = { duration: 20, ease: "easeInOut", repeat: Infinity, repea
 */
 const ClockAnim: React.FC = () => {
     const [isFinishedBig, setIsFinishedBig] = useState<boolean>(false);
-        
+    // const isInView = useInView(ref, { once: true });
+
     const draw = {
         hidden: {
             pathLength: 0,
@@ -80,9 +81,9 @@ const ClockAnim: React.FC = () => {
     }
     return (
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.49 322.73">
-                            <motion.polygon style={circle} variants={draw} className="reactclock" points="61.8 61.8 82.35 82.35 41.24 123.45 0.14 82.35 41.24 41.24 61.8 61.8 82.35 41.24 41.24 0.14 0.14 41.24 41.24 82.35 61.8 61.8" initial="hidden" animate="visible"/>
-                            <motion.circle style={circle} variants={draw} className="reactclock" cx="41.24" cy="137.35" r="41.1"  animate={isFinishedBig? "animate":"visiblespin"} onAnimationComplete={() => setIsFinishedBig(true)}/>
-                            <motion.path style={circle} variants={draw} className="reactclock" d="M41.24,311.61l5.49,5.49-5.49,5.49-5.49-5.49,5.49-5.49V143.27a5.67,5.67,0,1,0-5.67-5.67h0a5.67,5.67,0,0,0,5.67,5.67" initial="hidden" animate="visible"/>
+                            <motion.polygon style={circle} variants={draw} className="reactclock" points="61.8 61.8 82.35 82.35 41.24 123.45 0.14 82.35 41.24 41.24 61.8 61.8 82.35 41.24 41.24 0.14 0.14 41.24 41.24 82.35 61.8 61.8" initial="hidden" whileInView="visible"/>
+                            <motion.circle style={circle} variants={draw} className="reactclock" cx="41.24" cy="137.35" r="41.1"  initial="hidden" whileInView={isFinishedBig? "animate":"visiblespin"} onAnimationComplete={() => setIsFinishedBig(true)}/>
+                            <motion.path style={circle} variants={draw} className="reactclock" d="M41.24,311.61l5.49,5.49-5.49,5.49-5.49-5.49,5.49-5.49V143.27a5.67,5.67,0,1,0-5.67-5.67h0a5.67,5.67,0,0,0,5.67,5.67" initial="hidden" whileInView="visible"/>
             </svg>
     )
 }

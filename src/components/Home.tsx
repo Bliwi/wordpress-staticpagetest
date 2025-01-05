@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRef } from "react";
-import { motion } from "motion/react"
+import { motion, AnimatePresence, LayoutGroup } from "motion/react"
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import ClockAnim from './clock';
@@ -76,6 +76,18 @@ export default function Home() {
     };
   }, []);
 
+  //Info panel expanding animation
+  const words = ["Info", "Payment Methods", "Standard Procedure"];
+  const [index, setIndex] = React.useState(0);
+  const [expandedmoreinfo, setExpandedmoreinfo] = React.useState(false);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % words.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+  
   const animationvars = {
     hiddenblur: {
       filter: 'blur(20px)',
@@ -115,7 +127,7 @@ export default function Home() {
       initial="hidden"
       animate="visible"
     >
-      <div id="spash" />
+       <div id="spash" />
       <div id="clock3">
           
         <ClockAnim />
@@ -180,7 +192,15 @@ export default function Home() {
         </div>
         
         <div ref={container2}></div>
-        <div id="container2" className="container">
+        <motion.div id="container2" className="container"
+        layout="position"
+        transition={{ ease: "easeInOut"}}
+        style={{
+          height: expandedmoreinfo ? "100rem" : "64rem",
+          top: expandedmoreinfo ? "calc(100vh - 100rem)": "1rem" 
+        }}
+        >
+          <LayoutGroup>
           <div className="containerHeader" onClick={() => handleScroll(container2)}>
             <h1>Commissions</h1>
           </div>
@@ -232,12 +252,53 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div id="moreinfo">
-            <p>Info!</p>
-            <p>    V</p>
+          <div id="commissionsbuttonrow"
+          >
+              <motion.div
+                onClick={() => setExpandedmoreinfo(!expandedmoreinfo)}
+                layout="position"
+                transition={{ linear: 5}}
+                style={expandedmoreinfo ? largemoreinfo : minimizedmoreinfo}
+              >
+                {expandedmoreinfo ? (
+                  <div id="expandedmoreinfoInner">
+
+                  </div>
+                ) : (
+                  <AnimatePresence mode="wait">
+                  <motion.div
+                    key={words[index]}
+                    initial={{ opacity: 0, y: -40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 40 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {words[index]}
+                  </motion.div>
+                </AnimatePresence>
+                )}
+              </motion.div>
+            <motion.div
+              id="commissionsbuttonrowother"
+              layout="position"
+              transition={{ linear: 5}}
+              style={{flexDirection: expandedmoreinfo ? "column": "row" }}
+            >
+              <LayoutGroup>
+                <motion.button onClick={() => handleScroll(tosbasicinfo)}>TOS</motion.button>
+                <motion.button>FAQ</motion.button>
+              </LayoutGroup>
+            </motion.div>
           </div>
-        </div>
-        <div ref={contact}></div>
+          </LayoutGroup>
+        </motion.div>
+        <div ref={contact} style={{
+          width: "1rem",
+          height: "1rem",
+          background: "red",
+          zIndex: "200",
+          position: "relative"
+        }}></div>
         <div id="container3" className="container">
           <div onClick={() => handleScroll(contact)} className="containerHeader">
             <h1>Contact</h1>
@@ -370,3 +431,17 @@ export default function Home() {
     </motion.div>
   );
 };
+
+const minimizedmoreinfo: React.CSSProperties = {
+  background: 'var(--gray1)',
+  width: '12rem',
+  height: '4rem',
+  padding: '2rem',
+  display: 'flex',
+  borderRadius: '2rem'
+}
+const largemoreinfo: React.CSSProperties = {
+  background: 'blue',
+  width: '100%',
+  height: '10rem',
+}

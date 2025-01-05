@@ -42,23 +42,23 @@
 
 }
 #clock3 {
-	width: 50rem;
+	width: 40rem;
 	position: absolute;
-	top: 100vh;
-	left: -20rem;
+	top: calc(100vh + 5rem);
+	left: -15rem;
 
 }
 #clock4 {
 	width: 50rem;
 	position: absolute;
-	top: 180vh;
+	top: calc(100vh + 50rem);
 	right: -20rem;
 
 }
 #clock5 {
 	width: 20rem;
 	position: absolute;
-	top: 260vh;
+	top: calc(100vh + 100rem);
 	left: 2rem;
 
 }
@@ -147,16 +147,6 @@
 	transform: scale(1.1);
 }
 
-#moreinfo {
-	background: var(--gray1);
-	width: max-content;
-	font-size: larger;
-	margin-top: 1rem;
-	padding: 1rem;
-	border-radius: 2rem;
-	display: flex;
-	flex-direction: row;
-}
 #spash {
 	background: url('../assets/spash.png');
 	filter: blur(var(--scroll-amount-splash));
@@ -182,7 +172,6 @@
 #container2 {
 	position: sticky;
 	z-index: 1;
-	height: 64rem;
 	margin-bottom: -4rem;
 	background: var(--white);
 	top: 1rem;
@@ -226,6 +215,25 @@
     stroke-miterlimit: 10;
     stroke-width: 0.02rem;
 	transform: translate(-11.04 106.82);
+}
+/*commission row buttons more info expeanded */
+#commissionsbuttonrow {
+	display: flex;
+	flex-direction: row;
+	margin-top: 1rem;
+	gap: 1rem;
+}
+#commissionsbuttonrowother {
+	display: flex;
+	gap: 1rem;
+}
+#commissionsbuttonrow button {
+	height: 4rem;
+	min-width: 8rem;
+	border-radius: 2rem;
+}
+#expandedmoreinfoInner {
+	background: red;
 }
 
 /*contact section*/
@@ -323,6 +331,7 @@
 	font-size: 1.2rem;
 	margin-top: 1.5rem;
 }
+
 /*tos section*/
 #innerTOS {
 	flex: 1;
@@ -360,16 +369,4 @@
 	padding-left: 0;
 	font-size: 1.8rem;
 	font-weight: 800;
-}
-
-@media screen and (max-height: 50rem){
-	.page {
-		background: blue;
-	}
-	#container2 {
-		top: calc(100vh - 64rem);
-	}
-	#container3 {
-		top: calc(100vh - 64rem);
-	}
 }

@@ -108,13 +108,13 @@ const ClockAnim: React.FC = () => {
                 height="58.13" 
                 variants={draw}
                 initial="hiddenrect"
-                animate="visiblerect"
+                whileInView="visiblerect"
                 />
-                <motion.circle style={circle} variants={draw} cx="167.13" cy="107.83" r="107.72" initial="hidden" animate={isFinishedBig? "animate":"visiblespin"} onAnimationComplete={() => setIsFinishedBig(true)}/>
-                <motion.circle style={circle} variants={draw} cx="96.4" cy="214.23" r="66.61" initial="hidden" animate={isFinishedsmall? "animatesmall":"visiblespinsmall"} onAnimationComplete={() => setIsFinishedsmall(true)}/>
-                <motion.circle style={circle} variants={draw} cx="41.21" cy="121.73" r="41.1" initial="hidden" animate={isFinishedsmall2? "animatesmall2":"visiblespinsmall2"} onAnimationComplete={() => setIsFinishedsmall2(true)}/>
-                <motion.path className="reactclock" variants={draw} d="M96.4,388.24l5.49,5.49-5.49,5.49-5.49-5.49,5.49-5.49V219.9a5.67,5.67,0,1,0-5.67-5.67h0a5.67,5.67,0,0,0,5.67,5.67" initial="hidden" animate="visible"/>
-                <motion.path className="reactclock" variants={draw} d="M41.21,295.74l5.49,5.49-5.49,5.49-5.49-5.49,5.49-5.49V127.4a5.67,5.67,0,1,0-5.67-5.67h0a5.67,5.67,0,0,0,5.67,5.67" initial="hidden" animate="visible"/>
+                <motion.circle style={circle} variants={draw} cx="167.13" cy="107.83" r="107.72" initial="hidden" whileInView={isFinishedBig? "animate":"visiblespin"} onAnimationComplete={() => setIsFinishedBig(true)}/>
+                <motion.circle style={circle} variants={draw} cx="96.4" cy="214.23" r="66.61" initial="hidden" whileInView={isFinishedsmall? "animatesmall":"visiblespinsmall"} onAnimationComplete={() => setIsFinishedsmall(true)}/>
+                <motion.circle style={circle} variants={draw} cx="41.21" cy="121.73" r="41.1" initial="hidden" whileInView={isFinishedsmall2? "animatesmall2":"visiblespinsmall2"} onAnimationComplete={() => setIsFinishedsmall2(true)}/>
+                <motion.path className="reactclock" variants={draw} d="M96.4,388.24l5.49,5.49-5.49,5.49-5.49-5.49,5.49-5.49V219.9a5.67,5.67,0,1,0-5.67-5.67h0a5.67,5.67,0,0,0,5.67,5.67" initial="hidden" whileInView="visible"/>
+                <motion.path className="reactclock" variants={draw} d="M41.21,295.74l5.49,5.49-5.49,5.49-5.49-5.49,5.49-5.49V127.4a5.67,5.67,0,1,0-5.67-5.67h0a5.67,5.67,0,0,0,5.67,5.67" initial="hidden" whileInView="visible"/>
         </svg>
     )
 }
