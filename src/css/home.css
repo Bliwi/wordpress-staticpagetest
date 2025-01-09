@@ -1,5 +1,23 @@
 /* Home section */
 /* containers Home */
+.fulltosbutton {
+	width: 10rem;
+	height: 10rem;
+	position: relative;
+	background: var(--gray2);
+	border-radius: 2rem;
+}
+.fulltosbutton[data-ison="true"] {
+	position: fixed;
+	width: 100vw;
+	height: 100vh ;
+	top: 0;
+	left: 0;
+	background: var(--gray2);
+	z-index: 20;
+	border-radius: 0;
+}
+
 #container1 {
 	border-radius: 3rem;
 	margin: auto auto;
@@ -10,6 +28,7 @@
 	transition: all 0.5s ease-in-out;
 	position: relative;
 }
+
 #backgroundelements {
 	width: 100vw;
 	overflow: hidden;
@@ -32,57 +51,40 @@
 	height: 4.5rem;
 	right: 2rem;
 	top: 2.5rem;
-	fill: white;
+	fill: var(--white);
+}
+.clock {
+	position: absolute;
 }
 #clock1 {
 	width: 32rem;
-	position: absolute;
 	top: 0;
 	right: -1rem;
-
 }
 #clock2 {
 	width: 32rem;
-	position: absolute;
 	top: -15rem;
 	left: -12rem;
-
 }
 #clock3 {
 	width: 40rem;
-	position: absolute;
 	top: calc(100vh + 5rem);
 	left: -15rem;
-
 }
+
 #clock4 {
 	width: 50rem;
-	position: absolute;
 	top: calc(100vh + 50rem);
 	right: -20rem;
-
 }
+
 #clock5 {
-	width: 20rem;
-	position: absolute;
-	top: calc(100vh + 100rem);
+	width: 18rem;
+	bottom: 1rem;
 	left: 2rem;
+}
 
-}
-#circles1 {
-	position: absolute;
-	height: 5rem;
-	bottom: -2.5rem;
-	left: 0;
-}
-#circles2 {
-	position: absolute;
-	height: 5rem;
-	bottom: -2.5rem;
-	left: 2.5rem;
-	transform: rotate(180deg);
-}
-#socialstack{
+#socialstack {
 	position: absolute;
 	top: 8rem;
 	fill: #000;
@@ -90,6 +92,7 @@
 	width: 3rem;
 	height: 15rem;
 }
+
 #callforactionCommissions {
 	position: absolute;
 	bottom: 1rem;
@@ -98,13 +101,13 @@
 	font-size: 110%;
 	border-radius: 2rem;
 	width: 12rem;
-	color: var(--white);
-	background: var(--accent);
 	transition: all 0.1s ease-in-out;
 }
+
 #callforactionCommissions:hover {
 	transform: scale(1.05);
 }
+
 #contactCommissions {
 	position: absolute;
 	bottom: 1rem;
@@ -115,15 +118,19 @@
 	display: flex;
 	cursor: pointer;
 }
+
 #contactCommissions:hover {
 	transform: scale(1.05);
 }
+
 #contactCommissionsIconSVG {
 	transition: all 1s ease-in-out;
 }
+
 #contactCommissions:hover #contactCommissionsIconSVG {
 	transform: rotate(360deg);
 }
+
 #contactCommissionsInner {
 	background: var(--dark);
 	color: var(--white);
@@ -132,23 +139,28 @@
 	width: 12rem;
 	border-radius: 2rem;
 }
+
 #contactCommissionsIcon {
 	width: 3.5rem;
 	height: 3.5rem;
 	transition: all 1s ease-in-out;
 
 }
+
 #contactCommissionsIconbg {
 	fill: var(--dark);
 }
+
 #contactCommissionsIconInner {
 	margin: auto;
-	fill: white;
+	fill: var(--white);
 }
+
 .stackIcon {
 	fill: var(--dark);
 	transition: all 0.1s ease-in-out;
 }
+
 .stackIcon:hover {
 	fill: var(--accent);
 	transform: scale(1.1);
@@ -177,20 +189,33 @@
 }
 
 #container2 {
-	position: sticky;
 	z-index: 1;
 	margin-bottom: -4rem;
 	background: var(--white);
 	top: 1rem;
+	border-radius: 4rem 4rem 0 0;
+	height: 50rem;
 }
-
+#container2[data-ison="true"] {
+	height: 80rem;
+}
+#trelloboard {
+	width: 100%;
+	height: 40rem;
+	border: none;
+}
+.board .list-wrapper {
+	width: 2rem !important;
+	min-width: none !important;
+}
 #container3 {
-	position: sticky;
 	background: var(--gray1);
 	z-index: 3;
-	height: 64rem;
-	margin-bottom: -4rem;
-	top: 8rem;
+	min-height: 45rem;
+	height: calc(100vh - 10rem);
+	border-radius: 4rem 4rem 0 0;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 #container4 {
@@ -201,28 +226,31 @@
 }
 
 .containerHeader {
+	align-self: flex-start;
+	margin: 0 auto;
 	cursor: pointer;
 }
+
 /*Hero Card */
 #ct1wrapper {
 	width: 100%;
 	height: 90vh;
-	align-items: center;
-	display: flex;
 }
 .reactclock {
-    fill: none;
-    stroke: var(--dark);
-    stroke-miterlimit: 10;
-    stroke-width: 0.02rem;
+	fill: none;
+	stroke: var(--dark);
+	stroke-miterlimit: 10;
+	stroke-width: 0.02rem;
 }
+
 .reactclockrect {
 	fill: none;
-    stroke: var(--dark);
-    stroke-miterlimit: 10;
-    stroke-width: 0.02rem;
+	stroke: var(--dark);
+	stroke-miterlimit: 10;
+	stroke-width: 0.02rem;
 	transform: translate(-11.04 106.82);
 }
+
 /*commission row buttons more info expeanded */
 #commissionsbuttonrow {
 	display: flex;
@@ -230,21 +258,20 @@
 	margin-top: 1rem;
 	gap: 1rem;
 }
+
 #commissionsbuttonrowother {
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
 }
-#commissionsbuttonrowother [isOn="true"] {
-	background-color: red;
-	flex-direction: column;
-}
-
 #commissionsbuttonrow button {
 	height: 4rem;
 	min-width: 8rem;
 	border-radius: 2rem;
+	background-color: var(--gray1);
+	color: var(--dark);
 }
+
 #expandedmoreinfoInner {
 	display: flex;
 	gap: 1rem;
@@ -255,27 +282,23 @@
 	height: 100%;
 }
 
-#expandedmoreinfoInner div {
+#expandedmoreinfoInner .wrapper {
 	border-radius: 1rem;
 	background: var(--white);
 	width: auto;
 	flex: 1;
 }
+
 /*contact section*/
-#contactContainerwrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	height: 45rem;
-}
-#contactBlurbwrapper{
+
+#contactBlurbwrapper {
 	width: 45rem;
 	height: 12rem;
 	position: relative;
 	margin: 5rem auto;
 }
-#contactBlurb{
+
+#contactBlurb {
 	width: 100%;
 	height: 100%;
 	border-radius: 3rem;
@@ -283,12 +306,10 @@
 	mask: url('../assets/bottom-square-corner.svg');
 	mask-position: bottom left;
 	mask-size: 48rem;
-	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-
 }
+
 #contactblurblogo {
 	width: 4rem;
 	position: absolute;
@@ -296,17 +317,19 @@
 	left: 0.5rem;
 	fill: var(--dark);
 }
+
 #contactBlurb h2 {
-	font-size: 380%;
+	text-align: center;
+	font-size: 350%;
 	margin: 0;
 	font-weight: 500;
 }
+
 #contactDiscordWrapper {
 	justify-content: center;
-	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
+
 #contactDiscord {
 	height: 3.5rem;
 	width: 15rem;
@@ -314,14 +337,11 @@
 	display: flex;
 	cursor: pointer;
 }
+
 #contactDiscord:hover {
 	transform: scale(1.05);
 }
-
 #contactDiscordInner {
-
-	background: var(--accent);
-	color: var(--white);
 	height: 100%;
 	font-size: 110%;
 	width: 12rem;
@@ -333,10 +353,12 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
+
 #contactFotterInner {
 	display: flex;
 	flex-direction: row;
 }
+
 #contactFotter a {
 	color: var(--dark);
 	font-size: 120%;
@@ -346,52 +368,21 @@
 	cursor: pointer;
 	height: fit-content;
 }
+
 #contactFotter a:hover {
 	font-size: 120%;
 	background: var(--white);
 	padding: 0.5rem;
 	border-radius: 0.3rem;
 }
+
 #contactFotter h2 {
 	font-size: 1.2rem;
 	margin-top: 1.5rem;
 }
 
-/*tos section*/
-#innerTOS {
-	flex: 1;
-	background: var(--gray1);
-	border-radius: 3rem;
-	align-items: center;
-	overflow: scroll;
-}
-#innerTOS h2 {
-	font-size: 2.5rem;
-	margin: 1rem;
-	padding-bottom: 2rem;
-	text-align: center;
-	padding: 0;
-}
-#innerTOS p {
-	text-align: center;
-	font-size: 1.3rem;
-	margin: 1rem;
-	line-height: 2rem;
-}
-#sidebarTOS {
-	display: flex;
-	flex-direction: column;
-}
-#sidebarTOS a {
-	color: var(--dark);
-	font-size: 1.2rem;
-	margin: 0.2rem;
-	padding-left: 1rem;
-	cursor: pointer;
-	font-weight: 100;
-}
-#sidebarTOS .headerSidebarTOS {
-	padding-left: 0;
-	font-size: 1.8rem;
-	font-weight: 800;
+@media (orientation: portrait) {
+	#expandedmoreinfoInner {
+		flex-direction: column;
+	}
 }

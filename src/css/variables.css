@@ -1,14 +1,26 @@
-
 :root {
+
     --white: #fff;
     --gray1: #F5F5F5;
     --gray2: #E5E3E3;
     --dark: #2C2C2C;
     --accent: #D52327;
 
-    /*Text variables*/
-    --button-text: 
+/*Text variables*/
+--whitetext: #fff;
 }
+/*
+:root {
+--white: #424646;
+--gray1: #2e3030;
+--gray2: #1d1d1d;
+
+--dark: #F5F5F5;
+--accent: #D52327;
+
+--whitetext: #fff;
+}
+
 /*
     :root {
         --white: #6c6c6c;

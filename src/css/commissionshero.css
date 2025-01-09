@@ -8,7 +8,7 @@
 
 .itemHeroCommissions {
   flex: 1;
-  background-color: #ffffff;
+  background-color: var(--white);
   margin: 0.5rem 0;
   border-radius: 1.5rem;
   transition: flex 0.5s ease, background-color 0.5s ease, background-position 0.5s ease, color 0.5s ease;
@@ -28,7 +28,7 @@
 .itemHeroCommissions:hover {
   flex: 2;
   background-color: var(--accent);
-  color: white;
+  color: var(--whitetext);
   background-position: center;
 }
 
@@ -97,7 +97,7 @@
   position: absolute;
   right: 5rem;
   bottom: 0rem;
-  color: var(--white);
+  color: var(--whitetext);
   background-color: var(--accent);
   width: 15rem;
   height: 5rem;
