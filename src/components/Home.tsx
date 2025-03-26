@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "motion/react"
 import React, { useEffect } from 'react';
-import { Link,useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useMeasure from "react-use-measure";
 import ClockAnim from './clock';
 import ClockAnim2 from './clock2';
@@ -12,49 +12,30 @@ import HbHero from './commissionshero/HbHero';
 import FbHero from './commissionshero/FbHero';
 import SceneHero from './commissionshero/SceneHero';
 import RefSheetHero from './commissionshero/RefSheetHero';
+import mask from '../assets/square-corner2.svg';
 
 export default function Home() {
   
-  const [activeComp, setActiveCompb] = useState('iconhero');
-  const [portfoliohref, setPortfoliohref] = useState("/portfolio/icons");
+  const [activeComp, setActiveComp] = useState('/portfolio/icons');
   const renderActiveComponent = () => {
     switch (activeComp) {
-      case 'iconhero':
+      case '/portfolio/icons':
         return <IconHero />;
-      case 'hbhero':
+      case '/portfolio/halfbody':
         return <HbHero />;
-      case 'fbhero':
+      case '/portfolio/fullbody':
         return <FbHero />;
-      case 'scenehero':
+      case '/portfolio/scene':
         return <SceneHero />;
-      case 'refsheethero':
+      case '/portfolio/refsheet':
         return <RefSheetHero />;
       default:
         return null;
     }
   };
-  const setActiveComp = (comp: string) => {
-    setActiveCompb(comp);
-    if (comp === 'iconhero') {
-      setPortfoliohref('/portfolio/icons');
-    } else if (comp === 'hbhero') {
-      setPortfoliohref('/portfolio/halfbody');
-    } else if (comp === 'fbhero') {
-      setPortfoliohref('/portfolio/fullbody');
-    } else if (comp === 'scenehero') {
-      setPortfoliohref('/portfolio/scene');
-    } else if (comp === 'refsheethero') {
-      setPortfoliohref('/portfolio/refsheet');
-    }
-  }
+  
 
-  const contact = useRef(null);
-  const container2 = useRef(null);
-  const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollAmount = window.scrollY;
@@ -70,23 +51,118 @@ export default function Home() {
     };
   }, []);
 
+  //info panel 
+  
+  
+  const [activeInfo, setActiveInfo] = useState('minimized');
+  const expandedmoreinfo = activeInfo !== 'minimized';
+
+  const renderActiveInfo = () => {
+    switch (activeInfo) {
+      case 'minimized':
+        return (
+          <AnimatePresence mode="wait">
+                  <motion.div
+                    key={words[index]}
+                    initial={{ opacity: 0, y: -40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 40 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {words[index]}
+                  </motion.div>
+          </AnimatePresence>
+        );
+      case 'expanded':
+        return (<div id="expandedmoreinfoInner">
+          <div className="wrapper">Payments
+          </div>
+          <div className="wrapper">Standard Procedure
+            
+            <motion.div
+            onClick={() => viewFulltos(!fulltos)}
+            layout
+            transition={{linear: 1, duration: 0.3}}
+            data-ison={fulltos} 
+            className="fulltosbutton"
+            
+            >View full tos</motion.div>
+          </div>
+          <div className="wrapper corner2">basic Info</div>
+        </div>
+        );
+      case 'tos':
+        return (
+          <h1>TOS TEMP</h1>
+        )
+      case 'faq':
+        return (
+          <h1>FAQ TEMP</h1>
+        )
+      case 'queue':
+        return (
+          <iframe src="https://trello.com/b/ZoRYiegO.html"></iframe>
+        );
+    }
+  };
+
+  const contact = useRef(null);
+  const container2 = useRef(null);
+  const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   //Info panel expanding animation
   const words = ["Info", "Payment Methods", "Standard Procedure"];
   const [index, setIndex] = React.useState(0);
-  const [expandedmoreinfo, setExpandedmoreinfo] = React.useState(false);
   const [fulltos, viewFulltos] = React.useState(false);
   const [performance, setPerformance] = React.useState(true);
-  const navigate = useNavigate();
-  const viewfulltosfunction = () => {
-    navigate("/tos");
-  };
   React.useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % words.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-  
+  const c2vars = {
+    minimized: {
+      height: "50rem",
+    },
+    expanded: {
+      height: "80rem",
+    },
+    tos: {
+      height: "100rem",
+    },
+    faq: {
+      height: "100rem",
+    },
+    queue: {
+      height: "78rem",
+    }
+  }
+  const ivars = {
+    minimized: {
+      width: '12rem',
+      height: "2rem"
+    },
+    expanded: {
+      width: '100%',
+      height: '32rem',
+    },
+    tos: {
+      width: '100%',
+      height: '50rem',
+    },
+    faq: {
+      width: '100%',
+      height: '50rem',
+    },
+    queue: {
+      width: '100%',
+      height: '30rem',
+    }
+  }
   const animationvars = {
     hiddenblur: {
       filter: 'blur(20px)',
@@ -178,48 +254,47 @@ export default function Home() {
         <motion.div id="container2" className="container"
         layout="position"
         transition={{ duration: 0.5, ease: "easeInOut"}}
-        animate={{height: expandedmoreinfo ? "100rem" : "50rem",}}
-        
+        variants={c2vars}
+        animate={activeInfo}
         >
           <LayoutGroup>
           <div className="containerHeader" onClick={() => handleScroll(container2)}>
             <h1>Commissions</h1>
           </div>
-          <iframe src="https://trello.com/b/ZoRYiegO.html" id="trelloboard"/>
           <div className="commissionsHeroContainer">
             <div className="commissionsHeroSidebar">
               <div
                 className="itemHeroCommissions"
                 style={{ backgroundImage: "url('../snipets/kagogi icon.png')", marginTop: 0 }}
-                onClick={() => setActiveComp('iconhero')}
+                onClick={() => setActiveComp('/portfolio/icons')}
               >
                 icon
               </div>
               <div
                 className="itemHeroCommissions half-bodyCommission"
                 style={{ backgroundImage: "url('../snipets/archie_lowres watermarked.png')" }}
-                onClick={() => setActiveComp('hbhero')}
+                onClick={() => setActiveComp('/portfolio/halfbody')}
               >
                 half body
               </div>
               <div
                 className="itemHeroCommissions full-bodyCommission"
                 style={{ backgroundImage: "url('../snipets/milo.png')" }}
-                onClick={() => setActiveComp('fbhero')}
+                onClick={() => setActiveComp('/portfolio/fullbody')}
               >
                 full body
               </div>
               <div
                 className="itemHeroCommissions"
                 style={{ backgroundImage: "url('../snipets/proto-fisheye-no-ovelay.png')" }}
-                onClick={() => setActiveComp('scenehero')}
+                onClick={() => setActiveComp('/portfolio/scene')}
               >
                 scene
               </div>
               <div
                 className="itemHeroCommissions"
                 style={{ backgroundImage: "url('../snipets/Iralikesentinel_Ira.png')", marginBottom: 0 }}
-                onClick={() => setActiveComp('refsheethero')}
+                onClick={() => setActiveComp('/portfolio/refsheet')}
               >
                 ref-sheet
               </div>
@@ -228,7 +303,7 @@ export default function Home() {
               <div id="ActiveComponentWrapper">
               {renderActiveComponent()}
               </div>
-              <Link to={portfoliohref} id="callForActionPortfolioWrapper">
+              <Link to={activeComp} id="callForActionPortfolioWrapper">
                 <a id="callForActionPortfolio">More Examples</a>
                 <div id="callForActionPortfolioCircle"></div>
               </Link>
@@ -237,62 +312,31 @@ export default function Home() {
           <div id="commissionsbuttonrow"
           >
               <motion.div
-                onClick={() => setExpandedmoreinfo(true)}
-                transition={{ duration: 0.5, linear: 1 }}
+                onClick={() => setActiveInfo('expanded')}
+                transition={{ duration: 0.3, linear: 1 }}
                 id="expandedmoreinfobutton"
-                style={{
-                  background: 'var(--gray1)',
-                  padding: '1rem',
-                  borderRadius: '2rem',
-                  alignContent: 'center',
-                  overflow: 'hidden'
+                
+                style={{mask: expandedmoreinfo ? `url("${mask}")` : 'none',
+                maskPosition: expandedmoreinfo ? 'top right' : 'none',
+                maskSize: expandedmoreinfo ? '120rem' : 'none',
                 }}
-                animate={{
-                  width: expandedmoreinfo ? '100%' : '12rem',
-                  height: expandedmoreinfo ? '50rem': '2rem',
-                }}
+                variants={ivars}
+                animate={activeInfo}
               >
-                {expandedmoreinfo ? (
-                  <div id="expandedmoreinfoInner">
-                    <div className="wrapper">Payments
-                    </div>
-                    <div className="wrapper">Standard Procedure
-                      
-                      <motion.div
-                      onClick={() => viewFulltos(!fulltos)}
-                      layout
-                      transition={{linear: 1, duration: 0.3}}
-                      data-ison={fulltos} 
-                      className="fulltosbutton"
-                      onLayoutAnimationComplete={viewfulltosfunction}
-                      >View full tos</motion.div>
-                    </div>
-                    <div className="wrapper">basic Info</div>
-                  </div>
-                ) : (
-                  <AnimatePresence mode="wait">
-                  <motion.div
-                    key={words[index]}
-                    initial={{ opacity: 0, y: -40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 40 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {words[index]}
-                  </motion.div>
+                {renderActiveInfo()}
+                </motion.div>
+                <AnimatePresence initial={false}>
+                {expandedmoreinfo && (<motion.div initial={{ opacity: 0, right: '40rem'}} animate={{ opacity: 1, right: '9rem'}} exit={{ opacity: 0, right: '40rem'}} transition={{ linear: 1, duration: 0.5}} id="commissionbuttonsclose"><motion.button className="cbcbutton" layout transition={{ linear: 1, duration: 0.1 }} onClick={() => setActiveInfo('expanded')}>#</motion.button><motion.button className="cbcbutton" layout transition={{ linear: 1, duration: 0.1 }} onClick={() => setActiveInfo('minimized')}>X</motion.button></motion.div>)}
                 </AnimatePresence>
-                )}
-              </motion.div>
               <motion.div
                 id="commissionsbuttonrowother"
                 style={{flexDirection: expandedmoreinfo ? "column" : "row" }}
                 transition={{ linear: 1, duration: 0.1 }}
                 layout data-expanded={expandedmoreinfo}
               > 
-                <motion.button layout transition={{ linear: 1, duration: 0.1 }} onClick={() => setExpandedmoreinfo(!expandedmoreinfo)}>button</motion.button>
-                <motion.button layout transition={{ linear: 1, duration: 0.1 }} onClick={() => setExpandedmoreinfo(!expandedmoreinfo)}>TOS</motion.button>
-                <motion.button layout transition={{ linear: 1, duration: 0.1 }} onClick={() => setExpandedmoreinfo(!expandedmoreinfo)}>FAQ</motion.button>
-                <motion.button layout transition={{ linear: 1, duration: 0.1 }} onClick={() => setExpandedmoreinfo(!expandedmoreinfo)}>Queue</motion.button>
+                <motion.button layout className="cbrbutton" transition={{ linear: 1, duration: 0.1 }} onClick={() => setActiveInfo('tos')}>TOS</motion.button>
+                <motion.button layout className="cbrbutton" transition={{ linear: 1, duration: 0.1 }} onClick={() => setActiveInfo('faq')}>FAQ</motion.button>
+                <motion.button layout className="cbrbutton" transition={{ linear: 1, duration: 0.1 }} onClick={() => setActiveInfo('queue')}>Queue</motion.button>
               </motion.div>
           </div>
           </LayoutGroup>

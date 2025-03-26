@@ -22,6 +22,7 @@ import FbHero from './components/portfolio/fullbody';
 import SceneHero from './components/portfolio/scene';
 import RefSheetHero from './components/portfolio/refsheet';
 import PathAnimation from './components/pathanimation';
+import IframeTest from './components/iframetest'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -41,6 +42,9 @@ createRoot(document.getElementById('root')!).render(
             <li>
               <Link to="/pathanim">Path animation</Link>
             </li>
+            <li>
+              <Link to="/iframe">iframe</Link>
+            </li>
           </ul>
         </nav>
 
@@ -48,6 +52,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="pathanim" element={<PathAnimation />} />
+          <Route path="iframe" element={<IframeTest />} />
           <Route path="portfolio" element={<Portfolio page={Icons} />}>
             <Route index element={<Icons />} />
             <Route path="icons" element={<Icons />} />
